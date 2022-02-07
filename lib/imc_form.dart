@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bmi_calculator/imc_textfield.dart';
 
 class IMCForm extends StatelessWidget {
   const IMCForm({Key? key}) : super(key: key);
@@ -14,27 +15,9 @@ class IMCForm extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 50),
-              TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Estatura (cm)',
-                ),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
+              const IMCTextField(label: 'Estatura (cm)'),
               const SizedBox(height: 40),
-              TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Peso (Kg)',
-                ),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
+              const IMCTextField(label: 'Pesoc(Kg)'),
               const SizedBox(height: 30),
               ElevatedButton(
                   onPressed: () => {}, child: const Text('Calcular')),
