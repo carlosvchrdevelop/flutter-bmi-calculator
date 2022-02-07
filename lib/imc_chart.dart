@@ -40,23 +40,40 @@ class IMCChart extends StatelessWidget {
           0.0, -((MediaQuery.of(context).size.width / 4.4) - 50), 0.0),
       child: Column(
         children: [
-          PieChart(
-            // Chart
-            dataMap: chartData,
-            animationDuration: const Duration(milliseconds: 800),
-            chartLegendSpacing: 20,
-            chartRadius: MediaQuery.of(context).size.width / 2.2,
-            colorList: colorListChart,
-            initialAngleInDegree: 180,
-            chartType: ChartType.ring,
-            ringStrokeWidth: 50,
-            centerText: "0.0",
-            legendOptions: const LegendOptions(showLegends: false),
-            chartValuesOptions: const ChartValuesOptions(
-                chartValueStyle: TextStyle(fontSize: 30, color: Colors.grey),
-                showChartValueBackground: false,
-                showChartValues: false),
-          ),
+          Stack(children: [
+            PieChart(
+              // Chart
+              dataMap: chartData,
+              animationDuration: const Duration(milliseconds: 800),
+              chartLegendSpacing: 20,
+              chartRadius: MediaQuery.of(context).size.width / 2.2,
+              colorList: colorListChart,
+              initialAngleInDegree: 180,
+              chartType: ChartType.ring,
+              ringStrokeWidth: 50,
+              centerText: "0.0",
+              legendOptions: const LegendOptions(showLegends: false),
+              chartValuesOptions: const ChartValuesOptions(
+                  chartValueStyle: TextStyle(fontSize: 30, color: Colors.grey),
+                  showChartValueBackground: false,
+                  showChartValues: false),
+            ),
+            Center(
+              child: Transform.rotate(
+                angle: 0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width / 2.2,
+                  height: MediaQuery.of(context).size.width / 2.2,
+                  alignment: Alignment.bottomCenter,
+                  child: Icon(
+                    Icons.arrow_drop_down_sharp,
+                    size: 50,
+                    color: Colors.grey.shade700,
+                  ),
+                ),
+              ),
+            ),
+          ]),
           PieChart(
             // Legend
             dataMap: chartData,
