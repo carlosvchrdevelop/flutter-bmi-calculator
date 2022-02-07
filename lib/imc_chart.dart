@@ -6,6 +6,15 @@ class IMCChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const List<Color> colorListChart = [
+      Color.fromRGBO(255, 255, 255, 0),
+      Color.fromRGBO(227, 66, 136, 76),
+      Color.fromRGBO(252, 124, 64, 1),
+      Color.fromRGBO(254, 151, 65, 1),
+      Color.fromRGBO(255, 216, 80, 1),
+      Color.fromRGBO(191, 223, 89, 1),
+      Color.fromRGBO(72, 220, 224, 1),
+    ];
     const List<Color> colorList = [
       Color.fromRGBO(255, 255, 255, 0),
       Color.fromRGBO(72, 220, 224, 1),
@@ -29,33 +38,46 @@ class IMCChart extends StatelessWidget {
         child: Container(
       transform: Matrix4.translationValues(
           0.0, -((MediaQuery.of(context).size.width / 4.4) - 50), 0.0),
-      child: PieChart(
-        dataMap: chartData,
-        animationDuration: const Duration(milliseconds: 800),
-        chartLegendSpacing: 20,
-        chartRadius: MediaQuery.of(context).size.width / 2.2,
-        colorList: colorList,
-        initialAngleInDegree: 180,
-        chartType: ChartType.ring,
-        ringStrokeWidth: 50,
-        centerText: "0.0",
-        legendOptions: const LegendOptions(
-          showLegendsInRow: false,
-          legendPosition: LegendPosition.bottom,
-          showLegends: true,
-          legendShape: BoxShape.circle,
-          legendTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
+      child: Column(
+        children: [
+          PieChart(
+            // Chart
+            dataMap: chartData,
+            animationDuration: const Duration(milliseconds: 800),
+            chartLegendSpacing: 20,
+            chartRadius: MediaQuery.of(context).size.width / 2.2,
+            colorList: colorListChart,
+            initialAngleInDegree: 180,
+            chartType: ChartType.ring,
+            ringStrokeWidth: 50,
+            centerText: "0.0",
+            legendOptions: const LegendOptions(showLegends: false),
+            chartValuesOptions: const ChartValuesOptions(
+                chartValueStyle: TextStyle(fontSize: 30, color: Colors.grey),
+                showChartValueBackground: false,
+                showChartValues: false),
           ),
-        ),
-        chartValuesOptions: const ChartValuesOptions(
-          chartValueStyle: TextStyle(fontSize: 30, color: Colors.grey),
-          showChartValueBackground: false,
-          showChartValues: false,
-          showChartValuesInPercentage: false,
-          showChartValuesOutside: false,
-          decimalPlaces: 1,
-        ),
+          PieChart(
+            // Legend
+            dataMap: chartData,
+            chartLegendSpacing: 10,
+            chartRadius: 0,
+            colorList: colorList,
+            ringStrokeWidth: 0,
+            legendOptions: const LegendOptions(
+              showLegendsInRow: false,
+              legendPosition: LegendPosition.bottom,
+              showLegends: true,
+              legendShape: BoxShape.circle,
+              legendTextStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            chartValuesOptions: const ChartValuesOptions(
+              showChartValues: false,
+            ),
+          ),
+        ],
       ),
     ));
   }
