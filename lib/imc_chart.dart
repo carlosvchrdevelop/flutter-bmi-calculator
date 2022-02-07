@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/providers/data_provider.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -9,6 +11,21 @@ class IMCChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dataProvider = Provider.of<DataProvider>(context);
+
+    double getIMCChartArrowAngle(double imc) {
+      const double minIMC = 15.0;
+      const double maxIMC = 45.0;
+
+      imc = (imc < 15)
+          ? 15
+          : (imc > 45)
+              ? 45
+              : imc;
+
+      final double percentaje = (imc - minIMC) / (maxIMC - minIMC);
+
+      return -(percentaje * pi - pi / 2);
+    }
 
     const List<Color> colorListChart = [
       Color.fromRGBO(255, 255, 255, 0),
@@ -34,8 +51,8 @@ class IMCChart extends StatelessWidget {
       'Normal (18.5 - 24.9)': 5,
       'Sobrepeso (25.0 - 29.9)': 5,
       'Obesidad leve (30.0 - 34.9)': 5,
-      'Obesidad media (35.0 - 39.9)': 5,
-      'Obesidad mórbida (>40.0)': 5,
+      'Obesidad media (35.0 - 39.9)': 6.5,
+      'Obesidad mórbida (>40.0)': 3.5,
     };
 
     return Center(
@@ -64,7 +81,7 @@ class IMCChart extends StatelessWidget {
             ),
             Center(
               child: Transform.rotate(
-                angle: 0,
+                angle: getIMCChartArrowAngle(dataProvider.getIMC()),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 2.2,
                   height: MediaQuery.of(context).size.width / 2.2,
