@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/imc_chart.dart';
 import 'package:flutter_bmi_calculator/imc_form.dart';
 
 void main() {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
             title: const Text('Calculadora IMC'),
           ),
           body: Column(
-            children: const [IMCForm()],
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [IMCForm(), IMCChart()],
           ),
         ));
   }
