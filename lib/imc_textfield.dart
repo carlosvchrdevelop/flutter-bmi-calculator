@@ -13,6 +13,7 @@ class IMCTextField extends StatelessWidget {
         labelText: label,
       ),
       keyboardType: TextInputType.number,
+      textAlign: TextAlign.center,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly
       ],

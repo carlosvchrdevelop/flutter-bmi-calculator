@@ -35,12 +35,24 @@ class IMCChart extends StatelessWidget {
                 position: LegendPosition.bottom,
                 overflowMode: LegendItemOverflowMode.wrap,
                 offset: const Offset(0, 0),
-                height: "40%"),
+                height: "100%"),
             annotations: [
+          CircularChartAnnotation(
+              widget: Transform.rotate(
+            angle: 3.14 / 3,
+            child: Container(
+              alignment: Alignment.topCenter,
+              height: 160,
+              child: const Icon(
+                Icons.arrow_drop_up_sharp,
+                size: 50,
+              ),
+            ),
+          )),
           CircularChartAnnotation(
               widget: const Text('0.0',
                   style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 0.5), fontSize: 25)))
+                      color: Color.fromRGBO(0, 0, 0, 0.5), fontSize: 25))),
         ],
             series: <CircularSeries>[
           DoughnutSeries<ChartData, String>(
