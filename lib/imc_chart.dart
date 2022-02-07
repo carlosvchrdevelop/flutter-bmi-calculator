@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_calculator/providers/data_provider.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:provider/provider.dart';
 
 class IMCChart extends StatelessWidget {
   const IMCChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final dataProvider = Provider.of<DataProvider>(context);
+
     const List<Color> colorListChart = [
       Color.fromRGBO(255, 255, 255, 0),
       Color.fromRGBO(227, 66, 136, 76),
@@ -51,7 +55,7 @@ class IMCChart extends StatelessWidget {
               initialAngleInDegree: 180,
               chartType: ChartType.ring,
               ringStrokeWidth: 50,
-              centerText: "0.0",
+              centerText: dataProvider.getIMC().toStringAsFixed(1),
               legendOptions: const LegendOptions(showLegends: false),
               chartValuesOptions: const ChartValuesOptions(
                   chartValueStyle: TextStyle(fontSize: 30, color: Colors.grey),
