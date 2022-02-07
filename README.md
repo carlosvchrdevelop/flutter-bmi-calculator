@@ -6,5 +6,7 @@ This App is a simple styled BMI calculater made with flutter for iOS and Android
 
 Here some screenshots!
 
-![Screenshot 1](docs/ss1.png)
-![Screenshot 2](docs/ss2.png)
+<p float="left">
+  <img src="docs/ss1.png" width="400" />
+  <img src="docs/ss2.png" width="400" /> 
+</p>
