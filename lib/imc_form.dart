@@ -15,11 +15,18 @@ class IMCForm extends StatelessWidget {
             children: [
               const SizedBox(height: 50),
               const IMCTextField(label: 'Estatura (cm)'),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               const IMCTextField(label: 'Peso (Kg)'),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               ElevatedButton(
-                  onPressed: () => {}, child: const Text('Calcular')),
+                  onPressed: () => {},
+                  child: const Padding(
+                    padding: EdgeInsets.all(14.0),
+                    child: Text(
+                      'Calcular',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  )),
             ],
           ),
         ),

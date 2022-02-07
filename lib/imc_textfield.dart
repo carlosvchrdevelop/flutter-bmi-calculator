@@ -8,6 +8,7 @@ class IMCTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: const TextStyle(fontSize: 24),
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: label,
@@ -15,7 +16,7 @@ class IMCTextField extends StatelessWidget {
       keyboardType: TextInputType.number,
       textAlign: TextAlign.center,
       inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+        FilteringTextInputFormatter.allow(RegExp(r'([0-9]+\.?[0-9]*|\.[0-9]+)'))
       ],
     );
   }
