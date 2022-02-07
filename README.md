@@ -2,7 +2,7 @@
 
 ## Simple BMI calculator app for Android and iOS devices
 
-This App is a simple styled BMI calculater made with flutter for iOS and Android devices.
+This is a simple styled BMI calculator made with flutter, for iOS and Android devices.
 
 Here some screenshots!
 

@@ -16,10 +16,10 @@ class IMCChart extends StatelessWidget {
       const double minIMC = 15.0;
       const double maxIMC = 45.0;
 
-      imc = (imc < 15)
-          ? 15
-          : (imc > 45)
-              ? 45
+      imc = (imc < minIMC)
+          ? minIMC
+          : (imc > maxIMC)
+              ? maxIMC
               : imc;
 
       final double percentaje = (imc - minIMC) / (maxIMC - minIMC);
